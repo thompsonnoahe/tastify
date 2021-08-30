@@ -7,9 +7,12 @@ import { searchRecipes } from '../../actions';
 class Results extends React.Component {
   state = { numResults: 20, offset: 0 };
   renderLoadMore() {
+    console.log(this.props);
     return (
       this.props.searchData.recipes &&
-      this.props.searchData.recipes.length >= 10
+      this.props.searchData.recipes.length >= 10 &&
+      this.props.searchData.recipes.length !==
+        this.props.searchData.totalResults
     );
   }
   loadMore() {
@@ -44,7 +47,10 @@ class Results extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { searchData: state.searchData };
+  console.log(state);
+  return {
+    searchData: state.searchData,
+  };
 };
 
 export default connect(mapStateToProps, { searchRecipes })(Results);

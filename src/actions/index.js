@@ -11,10 +11,14 @@ export const searchRecipes =
         offset,
       },
     });
-    console.log(data.results);
+    console.log(data);
     dispatch({
       type: types.GET_RECIPES,
-      payload: { recipes: data.results, query: query },
+      payload: {
+        recipes: data.results,
+        totalResults: data.totalResults,
+        query: query,
+      },
     });
   };
 
