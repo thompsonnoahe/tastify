@@ -9,14 +9,30 @@ let formData = {
 };
 
 class Search extends React.Component {
+  state = { loading: false, error: false, hideError: false };
+
   renderSearch({ input }) {
     return (
-      <div className='field'>
-        <div className='control'>
-          <input className='input' type='text' {...input} />
-          <button type='submit' className='button is-primary'>
-            Submit
-          </button>
+      <div className='flex'>
+        <div className='field w-full p-5'>
+          <div className='control ml-10'>
+            <input
+              className='input'
+              type='text'
+              {...input}
+              autoComplete='off'
+            />
+          </div>
+        </div>
+        <div className='field p-5 flex justify-center'>
+          <div className='control mr-10'>
+            <button type='submit' className='button is-primary inline-block'>
+              <span className='icon is-small'>
+                <i className='fas fa-utensils'></i>
+              </span>
+              <span>Search</span>
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -30,8 +46,26 @@ class Search extends React.Component {
     );
   }
 
-  handleSubmit(values) {
-    this.props.searchRecipes(values.search);
+  renderError() {
+    if (this.state.error) {
+      return (
+        <div className='notification is-danger' hidden={this.state.hideError}>
+          <button
+            className='delete'
+            onClick={() => this.setState({ hideError: true })}></button>
+          Something went wrong! Please try again later.
+        </div>
+      );
+    }
+    return null;
+  }
+
+  async handleSubmit(values) {
+    this.setState({ loading: true });
+    await this.props
+      .searchRecipes(values.search)
+      .catch(() => this.setState({ error: true, hideError: false }));
+    this.setState({ loading: false });
   }
 
   render() {
@@ -42,6 +76,12 @@ class Search extends React.Component {
           onSubmit={this.handleSubmit.bind(this)}
           render={this.renderForm.bind(this)}
         />
+        {this.state.loading ? (
+          <progress className='progress is-large is-primary' max='100'>
+            60%
+          </progress>
+        ) : null}
+        <div>{this.renderError()}</div>
       </div>
     );
   }
