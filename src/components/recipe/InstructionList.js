@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InstructionList = ({ steps }) => {
-  return (
+  return steps ? (
     <div className='tile is-parent'>
       <div className='tile is-child box'>
         <ol>
@@ -11,7 +11,7 @@ const InstructionList = ({ steps }) => {
         </ol>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default InstructionList;

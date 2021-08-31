@@ -34,7 +34,7 @@ const RecipeDetail = ({ getRecipeDetails, recipe }) => {
         <h1>Ingredients</h1>
         <IngredientList ingredients={recipe?.extendedIngredients} />
         <h1>Instructions</h1>
-        <InstructionList steps={recipe?.analyzedInstructions[0].steps} />
+        <InstructionList steps={recipe?.analyzedInstructions[0]?.steps} />
       </div>
     </div>
   );

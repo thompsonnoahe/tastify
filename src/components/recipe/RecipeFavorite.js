@@ -1,5 +1,6 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
@@ -10,8 +11,9 @@ import {
 
 const RecipeFavorite = props => {
   const [isFavorite, setIsFavorite] = useState(null);
+  const [hideNotification, setHideNotification] = useState(false);
   const { id } = useParams();
-  const { user } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   const favoriteRecipe = () => {
     if (user) {
@@ -39,6 +41,22 @@ const RecipeFavorite = props => {
       setIsFavorite(true);
     }
   });
+
+  if (!isAuthenticated) {
+    return (
+      <div className='notification' hidden={hideNotification}>
+        <button
+          className='delete'
+          onClick={() => setHideNotification(true)}></button>
+        <button
+          className='cursor-pointer underline'
+          onClick={() => loginWithRedirect()}>
+          Sign up
+        </button>{' '}
+        to favorite this recipe!
+      </div>
+    );
+  }
 
   if (props.favoriteRecipes.includes(id)) {
     return (
