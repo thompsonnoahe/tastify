@@ -7,12 +7,20 @@ import { Link } from 'react-router-dom';
 import spoonacular from '../../apis/spoonacular';
 
 const FavoriteRecipes = props => {
-  const { user } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-  console.log(favoriteRecipes);
   const getFavoriteRecipesBulk = async favorites => {
     if (!favorites.length) return;
+    const domain = 'tastify.us.auth0.com';
+    const token = await getAccessTokenSilently({
+      audience: `https://${domain}/api/v2/`,
+      scope: 'read:current_user update:current_user_metadata',
+    });
+    console.log(token);
     const { data } = await spoonacular.get('/informationBulk', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       params: {
         ids: favorites.join(),
       },
