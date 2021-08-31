@@ -27,7 +27,7 @@ const Home = () => {
             rgba(255, 255, 255, 0.5),
             rgba(0, 209, 178, 0.75)
             ),
-          url(${photoData?.urls?.full})`,
+          url(${photoData?.urls?.regular})`,
           }}>
           <h1
             className='text-9xl text-center'

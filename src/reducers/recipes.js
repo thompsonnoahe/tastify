@@ -17,3 +17,16 @@ export const recipeReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const favoriteRecipeReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.GET_FAVORITE_RECIPES:
+      return action.payload;
+    case types.SET_FAVORITE_RECIPES:
+      return [...state, ...action.payload];
+    case types.REMOVE_FAVORITE_RECIPE:
+      return action.payload;
+    default:
+      return state;
+  }
+};

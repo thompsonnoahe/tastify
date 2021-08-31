@@ -5,13 +5,13 @@ import _ from 'lodash';
 import { getRecipeDetails } from '../../actions';
 import IngredientList from './IngredientsList';
 import InstructionList from './InstructionList';
+import RecipeFavorite from './RecipeFavorite';
 
-const RecipeDetail = props => {
+const RecipeDetail = ({ getRecipeDetails, recipe }) => {
   const { id } = useParams();
-  console.log(props);
   useEffect(() => {
-    props.getRecipeDetails(id);
-  }, [id]);
+    getRecipeDetails(id);
+  }, [id, getRecipeDetails]);
   return (
     <div>
       <div
@@ -22,18 +22,19 @@ const RecipeDetail = props => {
             rgba(255, 255, 255, 0.9),
             rgba(0, 209, 178, 0.9)
             ),
-          url(${props.recipe?.image})`,
+          url(${recipe?.image})`,
           backgroundPosition: 'center',
         }}>
         <h1 className='text-7xl text-center'>
-          {_.startCase(_.toLower(props.recipe?.title))}
+          {_.startCase(_.toLower(recipe?.title))}
         </h1>
       </div>
       <div className='content py-20 px-32'>
+        <RecipeFavorite recipeId={id} />
         <h1>Ingredients</h1>
-        <IngredientList ingredients={props.recipe?.extendedIngredients} />
+        <IngredientList ingredients={recipe?.extendedIngredients} />
         <h1>Instructions</h1>
-        <InstructionList steps={props.recipe?.analyzedInstructions[0].steps} />
+        <InstructionList steps={recipe?.analyzedInstructions[0].steps} />
       </div>
     </div>
   );

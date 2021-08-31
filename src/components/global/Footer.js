@@ -25,7 +25,7 @@ const Footer = () => {
             className='has-text-primary'>
             TailwindCSS
           </a>
-          ,&nbsp;
+          &nbsp;and&nbsp;
           <a
             href='https://spoonacular.com/'
             rel='noreferrer'
@@ -33,14 +33,14 @@ const Footer = () => {
             className='has-text-primary'>
             Spoonacular
           </a>
-          , and&nbsp;
+          {/* , and&nbsp;
           <a
             href='https://reactjs.org/'
             rel='noreferrer'
             target='_blank'
             className='has-text-primary'>
             React.js
-          </a>
+          </a> */}
           .
         </p>
       </div>

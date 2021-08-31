@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginButton from '../auth/LoginButton';
+import LogoutButton from '../auth/LogoutButton';
+import ProfileIcon from '../auth/ProfileIcon';
 
 const Header = () => {
   return (
@@ -43,19 +46,12 @@ const Header = () => {
 
         <div className='navbar-end'>
           <div className='navbar-item'>
+            <ProfileIcon />
+          </div>
+          <div className='navbar-item'>
             <div className='buttons'>
-              <Link className='button is-primary'>
-                <span className='icon'>
-                  <i className='fas fa-user-plus'></i>
-                </span>
-                <strong>Sign up</strong>
-              </Link>
-              <Link className='button is-light'>
-                <span className='icon'>
-                  <i className='fas fa-sign-in-alt'></i>
-                </span>
-                <strong>Log in</strong>
-              </Link>
+              <LoginButton />
+              <LogoutButton />
             </div>
           </div>
         </div>

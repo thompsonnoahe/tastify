@@ -7,7 +7,6 @@ import { searchRecipes } from '../../actions';
 class Results extends React.Component {
   state = { numResults: 20, offset: 0 };
   renderLoadMore() {
-    console.log(this.props);
     return (
       this.props.searchData.recipes &&
       this.props.searchData.recipes.length >= 10 &&
@@ -28,7 +27,7 @@ class Results extends React.Component {
   }
   render() {
     return (
-      <div className='container grid grid-cols-5'>
+      <div className='container md:grid md:grid-cols-5'>
         {this.props.searchData.recipes?.map(recipe => (
           <RecipePreview key={recipe.id} recipe={recipe} />
         ))}
@@ -47,7 +46,6 @@ class Results extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     searchData: state.searchData,
   };

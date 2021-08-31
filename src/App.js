@@ -4,9 +4,12 @@ import Home from './components/home/Home';
 import RecipeDetail from './components/recipe/RecipeDetail';
 import Footer from './components/global/Footer';
 import Header from './components/global/Header';
+import Profile from './components/auth/Profile';
+import { withAuth0 } from '@auth0/auth0-react';
 
 class App extends React.Component {
   render() {
+    const { user } = this.props.auth0;
     return (
       <div>
         <Router>
@@ -14,6 +17,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/recipe/:id' component={RecipeDetail} />
+            <Route path={`/profile/${user?.nickname}`} component={Profile} />
           </Switch>
         </Router>
         <Footer />
@@ -22,4 +26,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
