@@ -5,8 +5,8 @@ import _ from 'lodash';
 import { getRecipeDetails } from '../../actions';
 import IngredientList from './IngredientsList';
 import InstructionList from './InstructionList';
-import RecipeFavorite from './RecipeFavorite';
 import RecipeRecommendations from './RecipeRecommendations';
+import InfoBar from './InfoBar';
 
 const RecipeDetail = ({ getRecipeDetails, recipe }) => {
   const { id } = useParams();
@@ -32,7 +32,7 @@ const RecipeDetail = ({ getRecipeDetails, recipe }) => {
         </h1>
       </div>
       <div className='content py-20 px-32'>
-        <RecipeFavorite recipeId={id} />
+        <InfoBar recipe={recipe} />
         <h1>Ingredients</h1>
         <div className='tile is-ancestor'>
           <IngredientList ingredients={recipe?.extendedIngredients} />
