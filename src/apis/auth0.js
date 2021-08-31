@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {} from 'dotenv/config';
 
 console.log(process.env);
 
