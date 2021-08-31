@@ -16,7 +16,6 @@ const FavoriteRecipes = props => {
       audience: `https://${domain}/api/v2/`,
       scope: 'read:current_user update:current_user_metadata',
     });
-    console.log(token);
     const { data } = await spoonacular.get('/informationBulk', {
       headers: {
         Authorization: `Bearer ${token}`,
