@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -52,7 +51,7 @@ const RecipeFavorite = props => {
           className='cursor-pointer underline'
           onClick={() => loginWithRedirect()}>
           Sign up
-        </button>{' '}
+        </button>
         to favorite this recipe!
       </div>
     );

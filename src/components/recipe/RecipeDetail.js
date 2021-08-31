@@ -6,9 +6,11 @@ import { getRecipeDetails } from '../../actions';
 import IngredientList from './IngredientsList';
 import InstructionList from './InstructionList';
 import RecipeFavorite from './RecipeFavorite';
+import RecipeRecommendations from './RecipeRecommendations';
 
 const RecipeDetail = ({ getRecipeDetails, recipe }) => {
   const { id } = useParams();
+  document.title = `${recipe?.title ?? ''} | Tastify`;
   useEffect(() => {
     getRecipeDetails(id);
   }, [id, getRecipeDetails]);
@@ -32,7 +34,10 @@ const RecipeDetail = ({ getRecipeDetails, recipe }) => {
       <div className='content py-20 px-32'>
         <RecipeFavorite recipeId={id} />
         <h1>Ingredients</h1>
-        <IngredientList ingredients={recipe?.extendedIngredients} />
+        <div className='tile is-ancestor'>
+          <IngredientList ingredients={recipe?.extendedIngredients} />
+          <RecipeRecommendations />
+        </div>
         <h1>Instructions</h1>
         <InstructionList steps={recipe?.analyzedInstructions[0]?.steps} />
       </div>

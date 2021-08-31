@@ -9,7 +9,7 @@ import spoonacular from '../../apis/spoonacular';
 const FavoriteRecipes = props => {
   const { user } = useAuth0();
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-
+  console.log(favoriteRecipes);
   const getFavoriteRecipesBulk = async favorites => {
     if (!favorites.length) return;
     const { data } = await spoonacular.get('/informationBulk', {
@@ -35,8 +35,13 @@ const FavoriteRecipes = props => {
     return (
       <div>
         {favoriteRecipes.map(recipe => (
-          <div>
+          <div key={recipe.id} className='flex'>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+              <img
+                className='rounded-full w-sm h-sm'
+                src={recipe.image}
+                alt={recipe.title}
+              />
               {recipe.title}
             </Link>
           </div>
