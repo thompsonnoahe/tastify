@@ -42,10 +42,13 @@ const FavoriteRecipes = props => {
     return (
       <div>
         {favoriteRecipes.map(recipe => (
-          <div key={recipe.id} className='flex'>
-            <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+          <div key={recipe.id}>
+            <Link
+              className='flex items-center mb-5'
+              to={`/recipe/${recipe.id}`}
+              key={recipe.id}>
               <img
-                className='rounded-full w-sm h-sm'
+                className='rounded-full w-24 h-24 mr-5'
                 src={recipe.image}
                 alt={recipe.title}
               />
