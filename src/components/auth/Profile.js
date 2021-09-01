@@ -28,7 +28,7 @@ class Profile extends React.Component {
                 alt={user.nickname}
               />
               <p className='my-10'>
-                Profile pictures powered by{' '}
+                Profile pictures powered by&nbsp;
                 <a
                   className='has-text-primary'
                   rel='noreferrer'

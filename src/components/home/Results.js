@@ -23,6 +23,7 @@ class Results extends React.Component {
     }
     this.props.searchRecipes(
       this.props.searchData.query,
+      this.props.searchData.cuisine,
       this.state.numResults,
       this.state.offset
     );

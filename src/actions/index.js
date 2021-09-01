@@ -3,11 +3,12 @@ import spoonacular from '../apis/spoonacular';
 import auth0 from '../apis/auth0';
 
 export const searchRecipes =
-  (query, number = 10, offset) =>
+  (query, cuisine = '', number = 10, offset) =>
   async dispatch => {
     const { data } = await spoonacular.get('/complexSearch', {
       params: {
         query,
+        cuisine,
         number,
         offset,
       },
@@ -17,7 +18,8 @@ export const searchRecipes =
       payload: {
         recipes: data.results,
         totalResults: data.totalResults,
-        query: query,
+        query,
+        cuisine,
       },
     });
   };
