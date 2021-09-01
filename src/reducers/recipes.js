@@ -30,3 +30,12 @@ export const favoriteRecipeReducer = (state = [], action) => {
       return state;
   }
 };
+
+export const autoCompleteReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.AUTOSUGGEST_RECIPE:
+      return [state, ...action.payload];
+    default:
+      return state;
+  }
+};

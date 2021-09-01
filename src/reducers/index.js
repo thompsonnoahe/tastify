@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import {
+  autoCompleteReducer,
   favoriteRecipeReducer,
   recipeReducer,
   recipesReducer,
@@ -9,4 +10,5 @@ export default combineReducers({
   searchData: recipesReducer,
   recipe: recipeReducer,
   favoriteRecipes: favoriteRecipeReducer,
+  autoCompletions: autoCompleteReducer,
 });

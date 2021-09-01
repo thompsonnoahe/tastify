@@ -22,6 +22,16 @@ export const searchRecipes =
     });
   };
 
+export const autoComplete = query => async dispatch => {
+  const { data } = await spoonacular.get('/autocomplete/', {
+    params: {
+      query,
+      number: 10,
+    },
+  });
+  dispatch({ type: types.AUTOSUGGEST_RECIPE, payload: data });
+};
+
 export const getRecipeDetails = id => async dispatch => {
   const { data } = await spoonacular.get(`/${id}/information`);
   dispatch({

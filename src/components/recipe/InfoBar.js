@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import RecipeFavorite from './RecipeFavorite';
 
 const InfoBar = ({ recipe }) => {
-  console.log(recipe);
-
   const renderVeganIcon = () => {
     return recipe?.vegan ? (
       <span className='icon icon-text my-20'>

@@ -14,6 +14,7 @@ const Home = () => {
     setPhotoData(data);
   };
   useEffect(() => {
+    document.title = 'Tastify';
     getRandomPhoto();
   }, []);
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { connect } from 'react-redux';
-
 import { searchRecipes } from '../../actions';
+import AutoSuggest from './AutoSuggest';
 
 let formData = {
   search: '',
@@ -11,18 +11,30 @@ let formData = {
 class Search extends React.Component {
   state = { loading: false, error: false, hideError: false };
 
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.inputRef = React.createRef();
+  }
+
+  handleChange(value) {
+    this.inputRef.current.value = value;
+  }
+
   renderSearch({ input }) {
     return (
       <div className='flex'>
         <div className='field w-full p-5'>
           <div className='control ml-10'>
             <input
+              ref={this.inputRef}
               className='input'
               type='text'
-              {...input}
+              {...{ ...input, value: this.inputRef.current?.value }}
               autoComplete='off'
             />
           </div>
+          <AutoSuggest handleChange={this.handleChange} value={input.value} />
         </div>
         <div className='field p-5 flex justify-center'>
           <div className='control mr-10'>
@@ -41,7 +53,7 @@ class Search extends React.Component {
   renderForm(formProps) {
     return (
       <form onSubmit={formProps.handleSubmit}>
-        <Field name='search' component={this.renderSearch} />
+        <Field name='search' render={this.renderSearch.bind(this)} />
       </form>
     );
   }
@@ -60,10 +72,10 @@ class Search extends React.Component {
     return null;
   }
 
-  async handleSubmit(values) {
+  async handleSubmit() {
     this.setState({ loading: true });
     await this.props
-      .searchRecipes(values.search)
+      .searchRecipes(this.inputRef.current.value)
       .catch(() => this.setState({ error: true, hideError: false }));
     this.setState({ loading: false });
   }
