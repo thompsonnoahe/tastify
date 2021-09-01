@@ -20,6 +20,7 @@ const AutoSuggest = props => {
             className='cursor-pointer'
             onClick={() => {
               props.handleChange(suggestion?.title);
+              props.onResultClicked();
               setHide(true);
             }}
             key={index}>

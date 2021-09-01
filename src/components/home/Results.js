@@ -6,14 +6,17 @@ import { searchRecipes } from '../../actions';
 
 class Results extends React.Component {
   state = { numResults: 20, offset: 0 };
+
   renderLoadMore() {
+    // If there are recipes, and the recipes array length is greater than 10, and if the recipes array length isn't equal to the total number of results, keep loading more until the length is equal to the total results
     return (
-      this.props.searchData.recipes &&
-      this.props.searchData.recipes.length >= 10 &&
-      this.props.searchData.recipes.length !==
+      this.props.searchData.recipes?.length &&
+      this.props.searchData.recipes?.length >= 10 &&
+      this.props.searchData.recipes?.length !==
         this.props.searchData.totalResults
     );
   }
+
   loadMore() {
     if (this.state.numResults % 100 === 0) {
       this.setState({ offset: this.state.numResults + 100 });
@@ -25,6 +28,7 @@ class Results extends React.Component {
     );
     this.setState({ numResults: this.state.numResults + 10 });
   }
+
   render() {
     return this.props.searchData.recipes?.length ||
       !this.props.searchData.query ? (

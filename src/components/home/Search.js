@@ -34,7 +34,11 @@ class Search extends React.Component {
               autoComplete='off'
             />
           </div>
-          <AutoSuggest handleChange={this.handleChange} value={input.value} />
+          <AutoSuggest
+            onResultClicked={this.handleSubmit.bind(this)}
+            handleChange={this.handleChange}
+            value={input.value}
+          />
         </div>
         <div className='field p-5 flex justify-center'>
           <div className='control mr-10'>

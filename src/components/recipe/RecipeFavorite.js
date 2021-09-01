@@ -25,7 +25,6 @@ const RecipeFavorite = props => {
     if (user) {
       setIsFavorite(false);
       props.removeFavoriteRecipe(id, user.sub);
-      // props.getFavoriteRecipes(user.sub);
     }
   };
 
@@ -52,7 +51,7 @@ const RecipeFavorite = props => {
           onClick={() => loginWithRedirect()}>
           Sign up
         </button>
-        to favorite this recipe!
+        &nbsp;to favorite this recipe!
       </div>
     );
   }
