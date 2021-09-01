@@ -26,7 +26,7 @@ class Results extends React.Component {
     this.setState({ numResults: this.state.numResults + 10 });
   }
   render() {
-    return (
+    return this.props.searchData.recipes.length ? (
       <div className='container md:grid md:grid-cols-5'>
         {this.props.searchData.recipes?.map(recipe => (
           <RecipePreview key={recipe.id} recipe={recipe} />
@@ -41,6 +41,8 @@ class Results extends React.Component {
           </div>
         ) : null}
       </div>
+    ) : (
+      <div className='container p-10'>No results found.</div>
     );
   }
 }
