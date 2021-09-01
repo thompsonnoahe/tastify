@@ -2,7 +2,7 @@ import React from 'react';
 
 const InstructionList = ({ steps }) => {
   return steps ? (
-    <div className='tile is-parent'>
+    <div className='tile is-parent mr-10'>
       <div className='tile is-child box'>
         <ol>
           {steps?.map(step => (

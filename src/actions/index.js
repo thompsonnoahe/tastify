@@ -33,7 +33,9 @@ export const autoComplete = query => async dispatch => {
 };
 
 export const getRecipeDetails = id => async dispatch => {
-  const { data } = await spoonacular.get(`/${id}/information`);
+  const { data } = await spoonacular.get(`/${id}/information`, {
+    params: { includeNutrition: true },
+  });
   dispatch({
     type: types.GET_RECIPE_INFO,
     payload: { recipe: data },

@@ -60,7 +60,7 @@ const RecipeFavorite = props => {
   if (props.favoriteRecipes.includes(id)) {
     return (
       <span
-        className='icon icon-text cursor-pointer is-medium my-20'
+        className='icon icon-text cursor-pointer is-medium my-10'
         onClick={unfavoriteRecipe}>
         <i className='fas fa-heart fa-2x'></i>
         <span>Favorited!</span>
@@ -69,7 +69,7 @@ const RecipeFavorite = props => {
   } else {
     return (
       <span
-        className='icon icon-text cursor-pointer is-medium my-20'
+        className='icon icon-text cursor-pointer is-medium my-10'
         onClick={favoriteRecipe}>
         <i className='far fa-heart fa-2x'></i>
         <span className='text-center'>Favorite Me</span>
