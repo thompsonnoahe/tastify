@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+A web app for discovering delicious recipes. View it live [here](https://mytastify.herokuapp.com/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
