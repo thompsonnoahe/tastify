@@ -18,7 +18,7 @@ ReactDOM.render(
       clientId='okuGKoSVNPUmQatK1ZpRk0YLbjvZOm58'
       redirectUri={window.location.origin}
       audience='https://tastify.us.auth0.com/api/v2/'
-      scope='read:current_user create:current_user_metadata update:current_user_metadata'>
+      scope='read:current_user read:users read:current_user read:user_idp_tokens create:current_user_metadata update:current_user_metadata'>
       <App />
     </Auth0Provider>
   </Provider>,
