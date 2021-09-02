@@ -2,6 +2,7 @@ import React from 'react';
 import RecipeFavorite from './RecipeFavorite';
 
 const RecipeInfoBar = ({ recipe }) => {
+  console.log(recipe);
   const calories = recipe?.nutrition?.nutrients?.find(
     n => n.name === 'Calories'
   ).amount;
@@ -24,11 +25,11 @@ const RecipeInfoBar = ({ recipe }) => {
     ) : null;
   };
 
-  const renderHealthIcon = () => {
-    return recipe?.veryHealthy ? (
+  const renderKetoIcon = () => {
+    return recipe?.diets?.includes('ketogenic') ? (
       <span className='icon icon-text my-10'>
-        <i className='fas fa-leaf fa-2x'></i>
-        <span className='text-center'>Healthy</span>
+        <i className='fas fa-fish fa-2x'></i>
+        <span className='text-center'>Keto-Friendly</span>
       </span>
     ) : null;
   };
@@ -72,7 +73,7 @@ const RecipeInfoBar = ({ recipe }) => {
   const renderCheapIcon = () => {
     return recipe?.cheap ? (
       <span className='icon icon-text my-10'>
-        <i className='fas fa-globe-americas fa-2x'></i>
+        <i className='fas fa-dollar-sign fa-2x'></i>
         <span className='text-center'>Cheap</span>
       </span>
     ) : null;
@@ -89,18 +90,24 @@ const RecipeInfoBar = ({ recipe }) => {
     );
   };
 
-  return (
-    <div className='tile is-12 box justify-around items-center p-20'>
+  const renderLinkIcon = () => {
+    return (
       <a rel='noreferrer' href={recipe?.sourceUrl} target='_blank'>
         <span className='icon icon-text my-10'>
           <i className='fas fa-link fa-2x'></i>
           <span>Recipe Link</span>
         </span>
       </a>
+    );
+  };
+
+  return (
+    <div className='tile is-12 box justify-around items-center p-20'>
+      {renderLinkIcon()}
       {renderCaloriesIcon()}
       {renderServingsIcon()}
       {renderTimeIcon()}
-      {renderHealthIcon()}
+      {renderKetoIcon()}
       {renderCheapIcon()}
       {renderVeganIcon()}
       {renderVegetarianIcon()}
