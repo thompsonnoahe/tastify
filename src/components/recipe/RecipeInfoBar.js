@@ -2,7 +2,6 @@ import React from 'react';
 import RecipeFavorite from './RecipeFavorite';
 
 const RecipeInfoBar = ({ recipe }) => {
-  console.log(recipe);
   const calories = recipe?.nutrition?.nutrients?.find(
     n => n.name === 'Calories'
   ).amount;
@@ -10,7 +9,7 @@ const RecipeInfoBar = ({ recipe }) => {
   const renderServingsIcon = () => {
     return recipe?.servings ? (
       <span className='icon icon-text my-10'>
-        <i class='fas fa-concierge-bell fa-2x'></i>
+        <i className='fas fa-concierge-bell fa-2x'></i>
         <span className='text-center'> {recipe?.servings} servings</span>
       </span>
     ) : null;
