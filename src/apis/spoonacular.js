@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+console.log(process.env);
+
 const spoonacular = axios.create({
   baseURL: 'https://api.spoonacular.com/recipes/',
   params: {
