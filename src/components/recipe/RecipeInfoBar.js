@@ -2,7 +2,6 @@ import React from 'react';
 import RecipeFavorite from './RecipeFavorite';
 
 const RecipeInfoBar = ({ recipe }) => {
-  console.log(recipe);
   const calories = recipe?.nutrition?.nutrients?.find(
     n => n.name === 'Calories'
   ).amount;

@@ -23,7 +23,10 @@ class Results extends React.Component {
     }
     this.props.searchRecipes(
       this.props.searchData.query,
-      this.props.searchData.cuisine,
+      this.props.cuisine,
+      this.props.intolerances.join(),
+      this.props.calorieFilters.minCalories,
+      this.props.calorieFilters.maxCalories,
       this.state.numResults,
       this.state.offset
     );
@@ -34,9 +37,19 @@ class Results extends React.Component {
     return this.props.searchData.recipes?.length ||
       !this.props.searchData.query ? (
       <div className='container md:grid md:grid-cols-5'>
-        {this.props.searchData.recipes?.map(recipe => (
-          <RecipePreview key={recipe.id} recipe={recipe} />
-        ))}
+        {this.props.searchData.recipes
+          ?.sort((a, b) => {
+            if (this.props.sortOrder === 'asc') {
+              return a.title > b.title ? -1 : 1;
+            } else if (this.props.sortOrder === 'desc') {
+              return a.title < b.title ? -1 : 1;
+            } else {
+              return 0;
+            }
+          })
+          ?.map(recipe => (
+            <RecipePreview key={recipe.id} recipe={recipe} />
+          ))}
         {this.renderLoadMore() ? (
           <div className='col-start-3'>
             <button
@@ -56,6 +69,10 @@ class Results extends React.Component {
 const mapStateToProps = state => {
   return {
     searchData: state.searchData,
+    sortOrder: state.sortOrder,
+    intolerances: state.selectedIntolerances,
+    cuisine: state.selectedCuisine,
+    calorieFilters: state.calorieFilters,
   };
 };
 
