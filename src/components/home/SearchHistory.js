@@ -16,10 +16,10 @@ const SearchHistory = ({
           key={index}
           className='mx-10 sm:m-3 inline-block cursor-pointer'
           onClick={() => handleResultClicked(item)}>
-          <span class='tag is-medium'>
+          <span className='tag is-medium'>
             {item}
             <button
-              class='delete is-small'
+              className='delete is-small'
               onClick={() => handleDeleteClicked(item)}></button>
           </span>
         </div>
