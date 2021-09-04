@@ -101,7 +101,7 @@ const RecipeInfoBar = ({ recipe }) => {
   };
 
   return (
-    <div className='tile is-12 box justify-around items-center p-20'>
+    <div className='tile is-12 box justify-around items-center p-20 '>
       {renderLinkIcon()}
       {renderCaloriesIcon()}
       {renderServingsIcon()}

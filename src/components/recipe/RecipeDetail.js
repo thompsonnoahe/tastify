@@ -32,7 +32,7 @@ const RecipeDetail = ({ getRecipeDetails, recipe }) => {
           {_.startCase(_.toLower(recipe?.title))}
         </h1>
       </div>
-      <div className='content py-20 px-32'>
+      <div className='content py-20 lg:px-32'>
         <RecipeInfoBar recipe={recipe} />
         <h1>Ingredients</h1>
         <div className='tile is-ancestor'>
