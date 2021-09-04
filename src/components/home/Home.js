@@ -4,6 +4,7 @@ import Results from './Results';
 import Search from './Search';
 
 import './Home.css';
+import SearchHistory from './SearchHistory';
 
 const Home = () => {
   const [photoData, setPhotoData] = useState(null);
@@ -39,6 +40,7 @@ const Home = () => {
       </div>
       <section className='main'>
         <Search />
+        <SearchHistory />
         <Results />
       </section>
     </div>

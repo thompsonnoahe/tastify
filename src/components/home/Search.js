@@ -5,6 +5,7 @@ import { searchRecipes } from '../../actions';
 import AutoSuggest from './AutoSuggest';
 import FilterBox from './FilterBox';
 import FilterButton from './FilterButton';
+import SearchHistory from './SearchHistory';
 
 let formData = {
   search: '',
@@ -12,7 +13,7 @@ let formData = {
 };
 
 class Search extends React.Component {
-  state = { loading: false, error: false, hideError: false };
+  state = { loading: false, error: false, hideError: false, searchHistory: [] };
 
   constructor(props) {
     super(props);
@@ -77,7 +78,6 @@ class Search extends React.Component {
       <div>
         <form className='flex items-center' onSubmit={formProps.handleSubmit}>
           <Field name='search' render={this.renderSearch.bind(this)} />
-          {/* <Field name='cuisine' render={this.renderCuisineSelect.bind(this)} /> */}
           <FilterButton />
           <Field name='submit' render={this.renderSubmit} />
         </form>
@@ -112,6 +112,15 @@ class Search extends React.Component {
       )
       .catch(() => this.setState({ error: true, hideError: false }));
     this.setState({ loading: false });
+    this.setState(prevState => ({
+      searchHistory: [this.inputRef.current.value, ...prevState.searchHistory],
+    }));
+  }
+
+  handleSearchHistoryDelete(item) {
+    this.setState(prevState => ({
+      searchHistory: [...prevState.searchHistory].filter(i => i !== item),
+    }));
   }
 
   render() {
@@ -127,6 +136,13 @@ class Search extends React.Component {
             60%
           </progress>
         ) : null}
+        <div>
+          <SearchHistory
+            handleResultClicked={this.handleChange.bind(this)}
+            handleDeleteClicked={this.handleSearchHistoryDelete.bind(this)}
+            history={this.state.searchHistory}
+          />
+        </div>
         <div>{this.renderError()}</div>
       </div>
     );

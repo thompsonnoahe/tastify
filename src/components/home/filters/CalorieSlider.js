@@ -13,6 +13,7 @@ const CalorieSlider = props => {
         value={value}
         type='range'
         min='0'
+        step='100'
         onChange={e => {
           setValue(e.target.value);
           props.setCaloriesFilter(e.target.value, props.type);

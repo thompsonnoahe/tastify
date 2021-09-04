@@ -13,7 +13,6 @@ export const searchRecipes =
     offset
   ) =>
   async dispatch => {
-    console.log(cuisine);
     const { data } = await spoonacular.get('/complexSearch', {
       params: {
         query,

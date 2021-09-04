@@ -76,7 +76,6 @@ const FilterBox = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return { showFilter: state.showFilter };
 };
 
