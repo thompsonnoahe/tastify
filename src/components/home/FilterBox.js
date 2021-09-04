@@ -9,8 +9,8 @@ const FilterBox = props => {
   return props.showFilter ? (
     <div className='tile is-parent'>
       <div className='tile is-child box'>
-        <div className='content p-5 flex justify-evenly'>
-          <div>
+        <div className='content p-5 flex justify-evenly sm:flex-col sm:justify-around'>
+          <div className='sm:p-5'>
             <h4>Intolerances</h4>
             <Intolerances
               intolerances={[
@@ -29,11 +29,11 @@ const FilterBox = props => {
               ]}
             />
           </div>
-          <div>
+          <div className='sm:p-5'>
             <h4>Caloric Content</h4>
             <Calories minCalories={'2000'} maxCalories={'2000'} />
           </div>
-          <div>
+          <div className='sm:p-5'>
             <h4>Cuisine</h4>
             <CuisineSelect
               cuisines={[
@@ -65,7 +65,7 @@ const FilterBox = props => {
               ]}
             />
           </div>
-          <div>
+          <div className='sm:p-5'>
             <h4>Sort Order</h4>
             <Sort />
           </div>
