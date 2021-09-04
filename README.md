@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Tastify
 
 A web app for discovering delicious recipes. View it live [here](https://mytastify.herokuapp.com/).
 
