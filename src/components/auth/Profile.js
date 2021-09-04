@@ -12,14 +12,14 @@ class Profile extends React.Component {
     const { user } = this.props.auth0;
     return (
       <div>
-        <section className='hero is-primary flex justify-center align-center'>
+        <section className='hero is-primary flex justify-center align-center sm:p-10'>
           <h1
             className='text-9xl text-center'
-            style={{ transform: 'translateY(-30%)' }}>
+            style={{ transform: 'translateY(-20%)' }}>
             My Profile
           </h1>
         </section>
-        <main className='flex content-around items-center'>
+        <main className='flex content-around items-center sm:flex-col'>
           <section className='content p-10 flex flex-col'>
             <div>
               <img

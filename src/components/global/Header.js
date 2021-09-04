@@ -1,47 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoginButton from '../auth/LoginButton';
 import LogoutButton from '../auth/LogoutButton';
 import ProfileIcon from '../auth/ProfileIcon';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
+  const [isMobileActive, setIsMobileActive] = useState(false);
   return (
     <nav
       className='navbar has-shadow p-1'
       role='navigation'
       aria-label='main navigation'>
       <div className='navbar-brand'>
-        <Link
-          to=''
+        <div
+          onClick={() => setIsMobileActive(!isMobileActive)}
           role='button'
-          className='navbar-burger'
+          className={`navbar-burger ${isMobileActive ? 'is-active' : ''}`}
           aria-label='menu'
-          aria-expanded='false'
+          aria-expanded={isMobileActive}
           data-target='navbarBasicExample'>
           <span aria-hidden='true'></span>
           <span aria-hidden='true'></span>
           <span aria-hidden='true'></span>
-        </Link>
+        </div>
+      </div>
+      <div className={isMobileActive ? '' : 'hidden'}>
+        <MobileMenu />
       </div>
       <div className='navbar-menu p-5 rounded-b-full'>
         <div id='navbarBasicExample' className='navbar-start'>
           <Link to='/' className='navbar-item'>
             Home
           </Link>
-
-          {/* <Link className='navbar-item'>Documentation</Link>
-
-          <div className='navbar-item has-dropdown is-hoverable'>
-            <Link className='navbar-link'>More</Link>
-
-            <div className='navbar-dropdown'>
-              <Link className='navbar-item'>About</Link>
-              <Link className='navbar-item'>Jobs</Link>
-              <Link className='navbar-item'>Contact</Link>
-              <hr className='navbar-divider' />
-              <Link className='navbar-item'>Report an issue</Link>
-            </div>
-          </div> */}
         </div>
 
         <div className='navbar-end'>

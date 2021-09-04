@@ -38,7 +38,7 @@ class Search extends React.Component {
   renderSubmit() {
     return (
       <div className='field p-5 flex justify-center'>
-        <div className='control mr-10'>
+        <div className='control lg:mr-10 sm:m-0'>
           <button type='submit' className='button is-primary inline-block'>
             <span className='icon is-small'>
               <i className='fas fa-utensils'></i>
@@ -76,7 +76,9 @@ class Search extends React.Component {
   renderForm(formProps) {
     return (
       <div>
-        <form className='flex items-center' onSubmit={formProps.handleSubmit}>
+        <form
+          className='flex items-center sm:flex-col sm:justify-center'
+          onSubmit={formProps.handleSubmit}>
           <Field name='search' render={this.renderSearch.bind(this)} />
           <FilterButton />
           <Field name='submit' render={this.renderSubmit} />

@@ -36,7 +36,7 @@ class Results extends React.Component {
   render() {
     return this.props.searchData.recipes?.length ||
       !this.props.searchData.query ? (
-      <div className='container md:grid md:grid-cols-5'>
+      <div className='container grid grid-cols-5 sm:block'>
         {this.props.searchData.recipes
           ?.sort((a, b) => {
             if (this.props.sortOrder === 'asc') {
@@ -51,7 +51,7 @@ class Results extends React.Component {
             <RecipePreview key={recipe.id} recipe={recipe} />
           ))}
         {this.renderLoadMore() ? (
-          <div className='col-start-3'>
+          <div className='col-start-3 sm:px-5'>
             <button
               onClick={this.loadMore.bind(this)}
               className='button w-full is-primary'>
