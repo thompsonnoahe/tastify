@@ -5,10 +5,10 @@ import auth0 from '../apis/auth0';
 export const searchRecipes =
   (
     query,
-    cuisine = '',
-    intolerances = '',
-    minCalories = 0,
-    maxCalories = 10000,
+    cuisine = null,
+    intolerances = null,
+    minCalories = null,
+    maxCalories = null,
     number = 10,
     offset
   ) =>

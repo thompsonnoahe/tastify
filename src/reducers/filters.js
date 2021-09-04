@@ -39,7 +39,7 @@ export const cuisineReducer = (state = '', action) => {
 };
 
 export const caloriesReducer = (
-  state = { minCalories: 1, maxCalories: 10000 },
+  state = { minCalories: null, maxCalories: null },
   action
 ) => {
   switch (action.type) {
